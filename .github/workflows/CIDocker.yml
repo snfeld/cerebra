@@ -33,5 +33,5 @@ jobs:
         set: |
           *.platform=linux/amd64      
           *.platform+=linux/arm64
-          *.angular-app.tags=pibrocks/angular-app:${{ github.ref_name }}
+          *.tags=pibrocks/angular-app:${{ github.ref_name }}
           
