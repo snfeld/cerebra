@@ -24,6 +24,7 @@ jobs:
         echo $RELEASE_VERSION
         echo ${{ env.RELEASE_VERSION }}
         echo ${{ github.ref_name }}
+        echo ${{ github.event.release.tag_name }}
           
     - name: Build and push
       uses: docker/bake-action@v6
