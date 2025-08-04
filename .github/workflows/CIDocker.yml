@@ -18,12 +18,19 @@ jobs:
       with:
         username: ${{ vars.DOCKERHUB_USER }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Test
+      run: |
+        echo $RELEASE_VERSION
+        echo ${{ env.RELEASE_VERSION }}
+        echo ${{ github.ref_name }}
           
     - name: Build and push
       uses: docker/bake-action@v6
       with:
-        push: true
+        push: false
         set: |
           *.platform=linux/amd64      
           *.platform+=linux/arm64
+          *.tags=:${{ github.ref_name }}
           
