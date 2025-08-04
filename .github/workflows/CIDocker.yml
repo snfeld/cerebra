@@ -25,7 +25,7 @@ jobs:
         echo ${{ env.RELEASE_VERSION }}
         echo ${{ github.ref_name }}
         echo ${{ github.event.release.tag_name }}
-        echo target: ${{ target }}
+        echo target: ${{ image }}
           
     - name: Build and push
       uses: docker/bake-action@v6
@@ -34,5 +34,5 @@ jobs:
         set: |
           *.platform=linux/amd64      
           *.platform+=linux/arm64
-          *.tags=${{ target }}:${{ github.ref_name }}
+          *.tags=pibrocks/angular-app:${{ github.ref_name }}
           
